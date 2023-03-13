@@ -24,6 +24,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    transition: 1s;
 }
 .videoRE4{
     height: 100vh;
@@ -116,8 +117,8 @@ h1 {
     top: 10%;
 }
 
-.hover-right .right .tee, .hover-left .left .tee{
-    opacity: 1;
+.hover-right .right .video, .hover-left .left .video{
+    opacity: 0;
 }
 
 .hover-left .left .btn,
