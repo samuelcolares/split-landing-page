@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    /* overflow: hidden; */
+    min-height: 100vh;
+    height: 100vh;
+}
+video{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.videoRE4{
+    height: 100vh;
+}
+.tee{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    transition: 1s;
+}
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #333;
+}
+.split {
+    overflow: hidden;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 1s, background-color 0.5s, width 1s ease-out, height 1s;
+}
+
+.split.left {
+    left: 0;
+    background-image: url(../img/residentEviI4.jpg);
+    background-position: right;
+}
+
+.split.right {
+    right: 0;
+    background-image: url(../img/diabloIV.png);
+    background-position: center;
+}
+
+.split.right:hover,
+.split.left:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.logo-img {
+    max-width: 400px;
+    width: 100%;
+}
+.logo-img.l1 {
+    height: 300px;
+}
+h1 {
+    height: 300px;
+    display: grid;
+    place-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 1s;
+}
+
+.btn {
+    text-decoration: none;
+    border: 1px solid white;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 1s;
+}
+
+.btn:active {
+    transform: translate(-50%, -50%) scale(0.98);
+}
+
+.hover-left .left {
+    width: 75%;
+}
+
+.hover-left .left h1,
+.hover-right .right h1 {
+    top: 10%;
+}
+
+.hover-right .right .tee, .hover-left .left .tee{
+    opacity: 1;
+}
+
+.hover-left .left .btn,
+.hover-right .right .btn {
+    top: 90%;
+}
+
+.hover-left .right {
+    width: 25%;
+}
+
+.hover-right .left {
+    width: 25%;
+}
+
+.hover-right .right {
+    width: 75%;
+}
+
+.hover-right .right-info,
+.hover-left .left-info {
+    opacity: 1;
+    transition: opacity 1s 1.2s;
+}
+
+.right-info,
+.left-info {
+    transition: opacity 0.1s;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+p {
+    text-align: center;
+    color: rgb(210, 200, 174);
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    text-shadow: 0px 2px 10px #000;
+}
+
+.returnBtn {
+    display: none;
+}
+@media screen and (max-width: 800px) {
+    video, .tee{
+        display: none;
+    }
+    p {
+        width: 90%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.3);
+        font-size: 1rem;
+    }
+
+    .hover-right .right-info,
+    .hover-left .left-info {
+        width: 100%;
+    }
+    .btn {
+        display: none; 
+    }
+    .btn.show{
+        display: block;
+        opacity: 0;
+    }
+    .btn.show.opacity{
+        opacity: 1;
+        transition: opacity 1s 1s;
+    }
+
+    .split.left {
+        background-position: right -300px center;
+    }
+
+
+    .hover-left .left {
+        width: 100%;
+        background-position: right -200px center;
+    }
+    .logo-img {
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .hover-left .right {
+        width: 0%;
+    }
+
+    .hover-right .left {
+        width: 0%;
+    }
+
+    .hover-right .right {
+        width: 100%;
+        background-position: center right -580px;
+    }
+
+    .hover-right .right-info,
+    .hover-left .left-info {
+        transition: opacity 1s 1.2s;
+        top: 60%;
+    }
+
+    .hover-right .returnBtn,
+    .hover-left .returnBtn {
+        display: flex;
+        transition: opacity 1s;
+        opacity: 1;
+    }
+
+    .returnBtn {
+        color: white;
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        background: none;
+        border: none;
+        text-transform: uppercase;
+        gap: 3px;
+        align-items: center;
+        opacity: 0;
+    }
+
+}
