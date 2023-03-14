@@ -1,5 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@font-face {
+    font-family: "diablo";
+    src: url(../fonts/ExocetBlizzardOT-Medium.ttf);
+}
+@font-face {
+    font-family: "resident";
+    src: url(../fonts/OldFenris-Regular.otf);
+}
+:root {
+    --container-background-color: #333;
+    --overlay-background-color: rgba(0, 0, 0, 0.4);
+    --default-color:#fff;
+    --default-color-text:rgb(210, 200, 174);
+    --hover-button-background-color:  rgba(0, 0, 0, 0.6);
 
+    --left-background: url(../img/residentEviI4.jpg);
+    --left-button-hoverEffect-color:rgb(160, 32, 42);
+
+    --right-background: url(../img/diabloIV.png);
+    --righ-button-text-color:rgb(186, 183, 186);
+    --righ-button-border-color:rgb(232, 28, 10);
+}
 * {
     margin: 0;
     padding: 0;
@@ -7,78 +28,60 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    /* overflow: hidden; */
+    font-family: "roboto", sans-serif;
     min-height: 100vh;
     height: 100vh;
 }
 
-/* svg, video, picture {
-	display: block;
-	max-width: 100%;
-} */
-
-
-.video{
+/* Video */
+.video {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: 1s;
 }
-.videoRE4{
-    height: 100vh;
+.videoRE4 {
+    height: 130vh;
+    left: 5%;
+    top: 40%;
 }
-.tee{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    opacity: 0;
-    transition: 1s;
-}
+
 .container {
     position: relative;
     width: 100%;
     height: 100%;
-    background: #333;
+    background-color: var(--container-background-color);
 }
+
 .split {
     overflow: hidden;
     position: absolute;
     width: 50%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    background-blend-mode: overlay;
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-blend-mode: overlay;
     transition: all 1s, background-color 0.5s, width 1s ease-out, height 1s;
 }
-
 .split.left {
     left: 0;
-    background-image: url(../img/residentEviI4.jpg);
-    background-position: right;
+    background-image: url(../img/teste.jpg);
+    background-position: center;
+    font-family: "resident", sans-serif;
 }
-
 .split.right {
     right: 0;
-    background-image: url(../img/diabloIV.png);
+    background-image: var(--right-background);
     background-position: center;
+    font-family: "diablo", sans-serif;
 }
-
 .split.right:hover,
 .split.left:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--overlay-background-color);
 }
 
-.logo-img {
-    max-width: 400px;
-    width: 100%;
-}
-.logo-img.l1 {
-    height: 300px;
-}
+/* logo */
 h1 {
     height: 300px;
     display: grid;
@@ -89,61 +92,98 @@ h1 {
     transform: translate(-50%, -50%);
     transition: top 1s;
 }
+.logo-img {
+    max-width: 400px;
+    width: 100%;
+}
+.logo-img.logo-left {
+    height: 300px;
+}
 
+/* botoes */
 .btn {
     text-decoration: none;
-    border: 1px solid white;
+    border: 1px solid var(--default-color);
     margin: 0 auto;
     padding: 1rem 2rem;
-    color: white;
+    color: var(--default-color);
     text-transform: uppercase;
     position: absolute;
     top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: top 1s;
+    transition: top 1s, opacity 0.4s, background-color 0.8s, color 0.8s,
+        border-color 0.8s, transform 1s;
 }
-
 .btn:active {
     transform: translate(-50%, -50%) scale(0.98);
 }
+.rightBtn:hover {
+    background-color: var(--hover-button-background-color);
+    color: var(--righ-button-text-color);
+    border-color: var(--righ-button-border-color);
+}
+.leftBtn span {
+    transition: color 0.8s;
+}
+.leftBtn:hover {
+    background-color: var(--hover-button-background-color);
+    border-color: var(--left-button-hoverEffect-color);
+}
+.leftBtn:hover span {
+    color: var(--left-button-hoverEffect-color);
+}
 
+/* Lado esquerdo em foco */
 .hover-left .left {
     width: 75%;
 }
+.hover-left .right {
+    width: 25%;
+}
+/* Lado direito em foco */
+.hover-right .right {
+    width: 75%;
+}
+.hover-right .left {
+    width: 25%;
+}
+.hover-right .videoRE4 {
+    left: -35%;
+}
 
+/* Logos */
 .hover-left .left h1,
 .hover-right .right h1 {
     top: 10%;
 }
 
-.hover-right .right .video, .hover-left .left .video{
+/* Botões de pre-order */
+.hover-left .leftBtn,
+.hover-right .rightBtn {
+    transform: translate(-50%, -50%) scale(1.2);
+    top: 90%;
+}
+/* Esconde o botão de pre-order de um lado quando o outro está em foco */
+.hover-left .rightBtn,
+.hover-right .leftBtn {
     opacity: 0;
 }
 
-.hover-left .left .btn,
-.hover-right .right .btn {
-    top: 90%;
+/* Esconder Vídeos quando algum lado estiver em foco */
+.hover-right .right .video,
+.hover-left .left .video {
+    opacity: 0;
 }
 
-.hover-left .right {
-    width: 25%;
-}
-
-.hover-right .left {
-    width: 25%;
-}
-
-.hover-right .right {
-    width: 75%;
-}
-
+/* Mostrar texto quando algum lado estiver em foco */
 .hover-right .right-info,
 .hover-left .left-info {
     opacity: 1;
-    transition: opacity 1s 1.2s;
+    transition: opacity 0.4s 1s;
 }
 
+/* Textos */
 .right-info,
 .left-info {
     transition: opacity 0.1s;
@@ -153,77 +193,90 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-p {
+.text {
     text-align: center;
-    color: rgb(210, 200, 174);
-    width: 80%;
+    color: var(--default-color-text);
     margin: 0 auto;
     font-size: 1.3rem;
     text-shadow: 0px 2px 10px #000;
 }
 
+/* Evento de clique para desaparecer com os textos */
+.right-info.opacityText,
+.left-info.opacityText {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* botao de retornar a tela inicial (escondido na versao desktop) */
 .returnBtn {
     display: none;
 }
+
 @media screen and (max-width: 800px) {
-    video, .tee{
-        display: none;
-    }
-    p {
-        width: 90%;
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.3);
-        font-size: 1rem;
+    /* Posicionamento do vídeo na versão mobile */
+    .videoRE4 {
+        left: -130%;
     }
 
-    .hover-right .right-info,
-    .hover-left .left-info {
-        width: 100%;
-    }
+    /* Botões de pre-order */
     .btn {
-        display: none; 
+        display: none;
+        width: 60%;
+        text-align: center;
+        transition: opacity 0.01s;
     }
-    .btn.show{
+    .btn.show {
         display: block;
         opacity: 0;
     }
-    .btn.show.opacity{
+    .btn.show.opacity {
         opacity: 1;
         transition: opacity 1s 1s;
     }
 
-    .split.left {
-        background-position: right -300px center;
-    }
-
-
+    /* Lado esquerdo em foco */
     .hover-left .left {
         width: 100%;
         background-position: right -200px center;
+        background-image: var(--left-background);
     }
-    .logo-img {
-        max-width: 400px;
-        width: 100%;
-    }
-
     .hover-left .right {
         width: 0%;
     }
-
+    /* Lado direito em foco */
+    .hover-right .right {
+        width: 100%;
+        background-position: center;
+        background-image: url(../img/necromante\ \(Large\).png);
+    }
     .hover-right .left {
         width: 0%;
     }
 
-    .hover-right .right {
+    /* responsividade do texto na versão mobile */
+    .hover-right .right-info,
+    .hover-left .left-info {
         width: 100%;
-        background-position: center right -580px;
+    }
+
+    /* Posicionamento dos botoes na versão mobile */
+    .hover-left .leftBtn,
+    .hover-right .rightBtn {
+        transform: translate(-50%, -50%) scale(1);
+        top: initial;
+        bottom: 10%;
+    }
+
+    /* Posicionamento dos logos na versão mobile */
+    .hover-left .left h1,
+    .hover-right .right h1 {
+        top: 5%;
     }
 
     .hover-right .right-info,
     .hover-left .left-info {
         transition: opacity 1s 1.2s;
-        top: 60%;
     }
 
     .hover-right .returnBtn,
@@ -233,8 +286,14 @@ p {
         opacity: 1;
     }
 
+    .text {
+        width: 90%;
+        background-color: var(--overlay-background-color);
+        font-size: 1rem;
+    }
+
     .returnBtn {
-        color: white;
+        color: var(--default-color);
         position: fixed;
         bottom: 10px;
         left: 10px;
@@ -244,17 +303,5 @@ p {
         gap: 3px;
         align-items: center;
         opacity: 0;
-    }
-
-}
-
-
-@media screen and (min-height: 1060px) {
-    .tee{
-        width: 150%;
-        transition: .5s !important;
-    }
-    .tee.d4{
-        width: 180%;
     }
 }
